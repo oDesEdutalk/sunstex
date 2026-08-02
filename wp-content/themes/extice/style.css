@@ -5280,7 +5280,6 @@ nav.post-navigation .nav-next {
   }
 
   .content-area {
-    width: calc(100% - 480px);
     float: left;
     position: relative;
   }
