@@ -1,0 +1,632 @@
+/* ==========================================================================
+   SUNSTEX - PRO UI/UX HISTORY TIMELINE & ABOUT US PAGE ENHANCEMENTS
+   ========================================================================== */
+
+:root {
+	--sunstex-orange: #f15a24;
+	--sunstex-orange-light: #ff7d47;
+	--sunstex-orange-glow: rgba(241, 90, 36, 0.22);
+	--sunstex-navy: #0d1e3a;
+	--sunstex-navy-light: #162a4d;
+	--sunstex-slate: #334155;
+	--sunstex-muted: #64748b;
+	--sunstex-border: #e2e8f0;
+	--sunstex-surface: #ffffff;
+	--sunstex-bg-soft: #f8fafc;
+	--sunstex-radius-lg: 28px;
+	--sunstex-radius-md: 16px;
+	--sunstex-radius-sm: 10px;
+	--sunstex-shadow-sm: 0 4px 12px rgba(13, 30, 58, 0.05);
+	--sunstex-shadow-md: 0 12px 32px -6px rgba(13, 30, 58, 0.08);
+	--sunstex-shadow-lg: 0 24px 50px -12px rgba(13, 30, 58, 0.12);
+}
+
+/* --------------------------------------------------------------------------
+   1. HISTORY SECTION CONTAINER (.sunstex-history)
+   -------------------------------------------------------------------------- */
+.sunstex-history {
+	position: relative !important;
+	display: block !important;
+	overflow: hidden;
+	width: min(100%, 1320px);
+	margin: 60px auto 100px !important;
+	padding: clamp(48px, 6vw, 84px) clamp(24px, 4vw, 56px) clamp(44px, 5vw, 68px) !important;
+	background:
+		radial-gradient(circle at 5% 15%, rgba(241, 90, 36, 0.04) 0%, transparent 45%),
+		radial-gradient(circle at 95% 85%, rgba(13, 30, 58, 0.04) 0%, transparent 45%),
+		linear-gradient(180deg, #ffffff 0%, #fbfcfe 60%, #f8fafc 100%) !important;
+	border: 1px solid rgba(226, 232, 240, 0.95);
+	border-radius: var(--sunstex-radius-lg) !important;
+	box-shadow: var(--sunstex-shadow-md) !important;
+	color: var(--sunstex-slate);
+	box-sizing: border-box;
+}
+
+/* Subtle decorative ambient backdrop elements */
+.sunstex-history::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	content: "";
+	background: linear-gradient(90deg, #f15a24 0%, #ff8c42 50%, #0d1e3a 100%);
+	pointer-events: none;
+}
+
+.sunstex-history > * {
+	position: relative;
+	z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   2. SECTION HEADING
+   -------------------------------------------------------------------------- */
+.sunstex-history-heading {
+	margin: 0 0 clamp(36px, 4.5vw, 56px) !important;
+	text-align: center;
+}
+
+.sunstex-history-heading .elementor-heading-title {
+	margin: 0 auto !important;
+	color: var(--sunstex-navy) !important;
+	font-family: inherit;
+	font-size: clamp(28px, 3.8vw, 42px) !important;
+	font-weight: 800 !important;
+	line-height: 1.25 !important;
+	letter-spacing: -0.02em;
+	text-align: center;
+	position: relative;
+	display: inline-block;
+}
+
+.sunstex-history-heading .elementor-heading-title::after {
+	content: "";
+	display: block;
+	width: 72px;
+	height: 4px;
+	margin: 14px auto 0;
+	background: linear-gradient(90deg, var(--sunstex-orange), var(--sunstex-orange-light));
+	border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   3. MILESTONE SHOWCASE FEATURE (.sunstex-history-feature)
+   -------------------------------------------------------------------------- */
+.sunstex-history-feature {
+	display: grid !important;
+	grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr) !important;
+	align-items: center;
+	gap: clamp(32px, 5vw, 68px) !important;
+	width: 100% !important;
+	max-width: 1140px;
+	margin: 0 auto clamp(40px, 5vw, 60px) !important;
+}
+
+/* Image Visual Card */
+.sunstex-history-image {
+	position: relative !important;
+	width: 100% !important;
+	border-radius: var(--sunstex-radius-md);
+	overflow: hidden;
+	box-shadow: var(--sunstex-shadow-lg) !important;
+	background: #0d1e3a;
+}
+
+.sunstex-history-image .elementor-widget-container {
+	position: relative;
+	overflow: hidden;
+	border-radius: var(--sunstex-radius-md);
+}
+
+.sunstex-history-image img {
+	display: block !important;
+	width: 100% !important;
+	height: auto !important;
+	aspect-ratio: 4 / 3 !important;
+	object-fit: cover !important;
+	filter: none !important; /* Full vivid natural colors */
+	border-radius: var(--sunstex-radius-md) !important;
+	transition: opacity 280ms ease, transform 350ms ease !important;
+}
+
+.sunstex-history-image:hover img {
+	transform: scale(1.03);
+}
+
+/* Floating Badges Over Image */
+.sunstex-img-overlay-badges {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	padding: 18px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	z-index: 3;
+}
+
+.sunstex-badge-chip {
+	display: inline-flex;
+	align-items: center;
+	font-weight: 700;
+	font-size: 13px;
+	line-height: 1;
+	border-radius: 100px;
+	padding: 8px 16px;
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	transition: all 240ms ease;
+}
+
+.sunstex-badge-chip.year-chip {
+	background: var(--sunstex-orange);
+	color: #ffffff;
+	font-size: 15px;
+	letter-spacing: 0.04em;
+	box-shadow: 0 6px 18px rgba(241, 90, 36, 0.35);
+}
+
+.sunstex-badge-chip.tag-chip {
+	background: rgba(13, 30, 58, 0.85);
+	color: #f8fafc;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Event Narrative Card */
+.sunstex-history-copy {
+	display: flex !important;
+	flex-direction: column !important;
+	justify-content: center;
+	min-height: 260px;
+	padding: 8px 0;
+}
+
+.sunstex-history-event {
+	display: none !important;
+	flex-direction: column;
+}
+
+.sunstex-history-event.is-active {
+	display: flex !important;
+	animation: sunstexFadeSlide 360ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sunstexFadeSlide {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.sunstex-history-eyebrow {
+	margin: 0 0 10px !important;
+}
+
+.sunstex-history-eyebrow,
+.sunstex-history-eyebrow p {
+	color: var(--sunstex-orange) !important;
+	font-size: 13px !important;
+	font-weight: 800 !important;
+	letter-spacing: 0.1em !important;
+	text-transform: uppercase !important;
+}
+
+.sunstex-history-event-title {
+	margin: 0 0 16px !important;
+}
+
+.sunstex-history-event-title .elementor-heading-title {
+	color: var(--sunstex-navy) !important;
+	font-family: inherit;
+	font-size: clamp(24px, 2.5vw, 32px) !important;
+	font-weight: 700 !important;
+	line-height: 1.3 !important;
+	letter-spacing: -0.01em;
+}
+
+.sunstex-history-event-description {
+	margin: 0 !important;
+}
+
+.sunstex-history-event-description,
+.sunstex-history-event-description p {
+	color: #475569 !important;
+	font-size: 16px !important;
+	line-height: 1.78 !important;
+	margin: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   4. INTERACTIVE TIMELINE TRACK & MILESTONES (.sunstex-history-timeline)
+   -------------------------------------------------------------------------- */
+.sunstex-history-timeline {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	gap: clamp(12px, 2.5vw, 28px) !important;
+	width: 100% !important;
+	max-width: 1080px;
+	margin: 0 auto !important;
+	padding: 16px 0 0 !important;
+}
+
+/* Prev / Next Circular Nav Buttons */
+.sunstex-history-arrow {
+	flex: 0 0 48px !important;
+	margin: 0 !important;
+	width: 48px !important;
+}
+
+.sunstex-history-arrow .elementor-button {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 48px !important;
+	height: 48px !important;
+	min-width: 48px !important;
+	min-height: 48px !important;
+	padding: 0 !important;
+	border: 1px solid rgba(203, 213, 225, 0.8) !important;
+	border-radius: 50% !important;
+	background: #ffffff !important;
+	box-shadow: var(--sunstex-shadow-sm) !important;
+	color: var(--sunstex-navy) !important;
+	font-size: 24px !important;
+	line-height: 1 !important;
+	cursor: pointer;
+	transition: all 220ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.sunstex-history-arrow .elementor-button:hover {
+	background: var(--sunstex-orange) !important;
+	border-color: var(--sunstex-orange) !important;
+	color: #ffffff !important;
+	transform: translateY(-2px) scale(1.08) !important;
+	box-shadow: 0 8px 20px rgba(241, 90, 36, 0.3) !important;
+}
+
+/* Years Group Layout */
+.sunstex-history-years {
+	position: relative !important;
+	display: grid !important;
+	grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+	align-items: center !important;
+	flex: 1 1 auto !important;
+	min-width: 0 !important;
+	width: auto !important;
+	padding: 32px 0 10px !important;
+}
+
+/* Base Grey Progress Rail */
+.sunstex-history-years::before {
+	position: absolute;
+	top: 15px;
+	left: 5%;
+	right: 5%;
+	height: 3px;
+	background: #e2e8f0;
+	border-radius: 4px;
+	content: "";
+	z-index: 1;
+}
+
+/* Dynamic Active Progress Track */
+.sunstex-timeline-progress {
+	position: absolute;
+	top: 15px;
+	left: 5%;
+	right: 5%;
+	height: 3px;
+	background: transparent;
+	pointer-events: none;
+	z-index: 2;
+}
+
+.sunstex-timeline-progress-fill {
+	height: 100%;
+	width: 0%;
+	background: linear-gradient(90deg, #f15a24, #ff8c42);
+	border-radius: 4px;
+	box-shadow: 0 0 10px rgba(241, 90, 36, 0.4);
+	transition: width 320ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Year Milestone Buttons */
+.sunstex-history-year {
+	position: relative !important;
+	min-width: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	text-align: center !important;
+	z-index: 3;
+}
+
+.sunstex-history-year .elementor-button {
+	display: block !important;
+	position: relative !important;
+	width: 100% !important;
+	padding: 22px 4px 6px !important;
+	border: 0 !important;
+	background: transparent !important;
+	box-shadow: none !important;
+	color: var(--sunstex-muted) !important;
+	font-family: inherit;
+	font-size: 15px !important;
+	font-weight: 600 !important;
+	line-height: 1.2 !important;
+	cursor: pointer;
+	text-decoration: none !important;
+	transition: all 220ms ease !important;
+}
+
+/* Circular Node Dot */
+.sunstex-history-year .elementor-button::before {
+	position: absolute;
+	top: -24px;
+	left: 50%;
+	width: 13px;
+	height: 13px;
+	border: 3px solid #cbd5e1;
+	border-radius: 50%;
+	background: #ffffff;
+	content: "";
+	transform: translateX(-50%);
+	transition: all 240ms cubic-bezier(0.4, 0, 0.2, 1);
+	box-sizing: content-box;
+}
+
+/* Node Hover State */
+.sunstex-history-year:hover .elementor-button {
+	color: var(--sunstex-orange) !important;
+}
+
+.sunstex-history-year:hover .elementor-button::before {
+	border-color: var(--sunstex-orange);
+	box-shadow: 0 0 0 4px var(--sunstex-orange-glow);
+}
+
+/* Active Node State */
+.sunstex-history-year.is-active .elementor-button {
+	color: var(--sunstex-orange) !important;
+	font-size: 18px !important;
+	font-weight: 800 !important;
+	transform: translateY(-2px);
+}
+
+.sunstex-history-year.is-active .elementor-button::before {
+	top: -27px;
+	width: 18px;
+	height: 18px;
+	border: 4px solid var(--sunstex-orange);
+	background: #ffffff;
+	box-shadow: 0 0 0 6px var(--sunstex-orange-glow), 0 4px 12px rgba(241, 90, 36, 0.3);
+}
+
+/* Passed Node State */
+.sunstex-history-year.is-passed .elementor-button::before {
+	background: var(--sunstex-orange);
+	border-color: var(--sunstex-orange);
+}
+
+/* Accessibility Focus */
+.sunstex-history-year .elementor-button:focus-visible,
+.sunstex-history-arrow .elementor-button:focus-visible {
+	outline: 3px solid var(--sunstex-orange);
+	outline-offset: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   5. MOBILE & TABLET RESPONSIVENESS
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+	.sunstex-history-feature {
+		grid-template-columns: 1fr !important;
+		gap: 28px !important;
+	}
+
+	.sunstex-history-image {
+		max-width: 520px;
+		margin: 0 auto;
+	}
+
+	.sunstex-history-copy {
+		min-height: auto;
+		text-align: center;
+	}
+
+	.sunstex-history-event-title .elementor-heading-title {
+		text-align: center;
+	}
+}
+
+@media (max-width: 640px) {
+	.sunstex-history {
+		padding: 36px 16px 32px !important;
+		margin: 40px auto 60px !important;
+		border-radius: 20px !important;
+	}
+
+	.sunstex-history-heading {
+		margin-bottom: 24px !important;
+	}
+
+	.sunstex-history-image img {
+		aspect-ratio: 16 / 10 !important;
+	}
+
+	.sunstex-badge-chip {
+		padding: 6px 12px;
+		font-size: 11px;
+	}
+
+	.sunstex-badge-chip.year-chip {
+		font-size: 13px;
+	}
+
+	.sunstex-history-timeline {
+		gap: 8px !important;
+	}
+
+	.sunstex-history-arrow {
+		flex: 0 0 38px !important;
+		width: 38px !important;
+	}
+
+	.sunstex-history-arrow .elementor-button {
+		width: 38px !important;
+		height: 38px !important;
+		min-width: 38px !important;
+		min-height: 38px !important;
+		font-size: 20px !important;
+	}
+
+	.sunstex-history-years {
+		padding: 24px 0 8px !important;
+	}
+
+	.sunstex-history-years::before,
+	.sunstex-timeline-progress {
+		top: 10px;
+	}
+
+	.sunstex-history-year .elementor-button {
+		padding: 16px 2px 4px !important;
+		font-size: 12px !important;
+	}
+
+	.sunstex-history-year .elementor-button::before {
+		top: -19px;
+		width: 9px;
+		height: 9px;
+	}
+
+	.sunstex-history-year.is-active .elementor-button {
+		font-size: 13px !important;
+	}
+
+	.sunstex-history-year.is-active .elementor-button::before {
+		top: -22px;
+		width: 14px;
+		height: 14px;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   6. GLOBAL PRO UI/UX ENHANCEMENTS FOR GIOI THIEU (ABOUT US) PAGE
+   -------------------------------------------------------------------------- */
+
+/* Hero Intro Section (Section 6160691) */
+.elementor-147 .elementor-element-6160691 {
+	margin-top: 60px !important;
+	margin-bottom: 80px !important;
+}
+
+.elementor-147 .elementor-element-3d6080d img,
+.elementor-147 .elementor-element-d7d4dfb img {
+	box-shadow: 0 20px 40px -10px rgba(13, 30, 58, 0.16) !important;
+	transition: transform 300ms ease;
+}
+
+.elementor-147 .elementor-element-3d6080d img:hover,
+.elementor-147 .elementor-element-d7d4dfb img:hover {
+	transform: translateY(-6px);
+}
+
+.elementor-147 .elementor-element-24bbfe0 .elementor-heading-title {
+	font-weight: 800 !important;
+	line-height: 1.28 !important;
+	letter-spacing: -0.02em;
+}
+
+/* 3 Core Strengths Cards (Section 1ff82ea) */
+.elementor-147 .elementor-element-e7c46b7,
+.elementor-147 .elementor-element-2699704,
+.elementor-147 .elementor-element-bca0bc5 {
+	border: 1px solid rgba(226, 232, 240, 0.8) !important;
+	background: #ffffff !important;
+	box-shadow: var(--sunstex-shadow-sm) !important;
+	border-radius: var(--sunstex-radius-md) !important;
+	transition: all 300ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+	position: relative;
+	overflow: hidden;
+}
+
+.elementor-147 .elementor-element-e7c46b7::before,
+.elementor-147 .elementor-element-2699704::before,
+.elementor-147 .elementor-element-bca0bc5::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, var(--sunstex-orange), var(--sunstex-orange-light));
+	opacity: 0;
+	transition: opacity 300ms ease;
+}
+
+.elementor-147 .elementor-element-e7c46b7:hover,
+.elementor-147 .elementor-element-2699704:hover,
+.elementor-147 .elementor-element-bca0bc5:hover {
+	transform: translateY(-10px) !important;
+	box-shadow: var(--sunstex-shadow-lg) !important;
+	border-color: rgba(241, 90, 36, 0.3) !important;
+}
+
+.elementor-147 .elementor-element-e7c46b7:hover::before,
+.elementor-147 .elementor-element-2699704:hover::before,
+.elementor-147 .elementor-element-bca0bc5:hover::before {
+	opacity: 1;
+}
+
+/* Statistics Counters (Section 858bf05) */
+.elementor-147 .elementor-element-8517069 .elementor-counter-number-wrapper,
+.elementor-147 .elementor-element-a75ee2b .elementor-counter-number-wrapper,
+.elementor-147 .elementor-element-64fc3f3 .elementor-counter-number-wrapper {
+	font-weight: 800 !important;
+	letter-spacing: -0.02em;
+	background: linear-gradient(180deg, #ffffff 30%, #ff8c42 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* Contact / Call to Action CTA (Section 05a2fb9) */
+.elementor-147 .elementor-element-05a2fb9 {
+	border-radius: var(--sunstex-radius-lg) !important;
+	box-shadow: var(--sunstex-shadow-lg) !important;
+	margin: 60px 24px !important;
+}
+
+.elementor-147 .elementor-element-a12e4d5 {
+	color: #ff8c42 !important;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+/* Primary CTA Buttons */
+.elementor-147 .elementor-button {
+	border-radius: 100px !important;
+	font-weight: 700 !important;
+	letter-spacing: 0.02em;
+	transition: all 260ms ease !important;
+}
+
+.elementor-147 .elementor-element-dcd557a .elementor-button,
+.elementor-147 .elementor-element-c9ae16e .elementor-button {
+	background: linear-gradient(90deg, #f15a24, #ff7236) !important;
+	box-shadow: 0 8px 24px rgba(241, 90, 36, 0.35) !important;
+}
+
+.elementor-147 .elementor-element-dcd557a .elementor-button:hover,
+.elementor-147 .elementor-element-c9ae16e .elementor-button:hover {
+	transform: translateY(-3px) scale(1.02);
+	box-shadow: 0 12px 30px rgba(241, 90, 36, 0.5) !important;
+}
