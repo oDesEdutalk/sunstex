@@ -63,7 +63,7 @@ html {
 	pointer-events: none;
 }
 
-.sunstex-history > * {
+.sunstex-history>* {
 	position: relative;
 	z-index: 2;
 }
@@ -79,7 +79,6 @@ html {
 .sunstex-history-heading .elementor-heading-title {
 	margin: 0 auto !important;
 	color: var(--sunstex-navy) !important;
-	font-family: inherit;
 	font-size: clamp(28px, 3.8vw, 42px) !important;
 	font-weight: 800 !important;
 	line-height: 1.25 !important;
@@ -155,7 +154,8 @@ body.elementor-editor-active .sunstex-history-event {
 	height: auto !important;
 	aspect-ratio: 4 / 3 !important;
 	object-fit: cover !important;
-	filter: none !important; /* Full vivid natural colors */
+	filter: none !important;
+	/* Full vivid natural colors */
 	border-radius: var(--sunstex-radius-md) !important;
 	transition: opacity 280ms ease, transform 350ms ease !important;
 }
@@ -178,6 +178,7 @@ body.elementor-editor-active .sunstex-history-event {
 		opacity: 0;
 		transform: translateY(12px);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
