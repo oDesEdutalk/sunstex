@@ -173,4 +173,42 @@ document.addEventListener("DOMContentLoaded", function () {
 		updateActiveState(0, false);
 		startAutoplay();
 	});
+
+	// Smooth scroll handling for buttons and links targeting history section
+	const scrollToHistorySection = (e) => {
+		const target = document.getElementById("lich-su-hinh-thanh") || document.querySelector(".sunstex-history");
+		if (target) {
+			if (e) {
+				e.preventDefault();
+			}
+			const header = document.querySelector("#masthead") || document.querySelector(".site-header");
+			const headerHeight = header ? header.offsetHeight : 80;
+			const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - (headerHeight + 20);
+
+			window.scrollTo({
+				top: Math.max(0, targetPosition),
+				behavior: "smooth",
+			});
+
+			try {
+				history.pushState(null, null, "#lich-su-hinh-thanh");
+			} catch (err) {}
+		}
+	};
+
+	// Event delegation for any link targeting #lich-su-hinh-thanh
+	document.addEventListener("click", function (e) {
+		const targetLink = e.target.closest('a[href*="#lich-su-hinh-thanh"], a[href*="#sunstex-history"]');
+		if (targetLink) {
+			scrollToHistorySection(e);
+		}
+	});
+
+	// If page is loaded with hash #lich-su-hinh-thanh, scroll smoothly to it
+	if (window.location.hash === "#lich-su-hinh-thanh" || window.location.hash === "#sunstex-history") {
+		setTimeout(() => {
+			scrollToHistorySection();
+		}, 350);
+	}
 });
+

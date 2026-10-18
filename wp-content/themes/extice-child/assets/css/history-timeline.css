@@ -21,6 +21,15 @@
 	--sunstex-shadow-lg: 0 24px 50px -12px rgba(13, 30, 58, 0.12);
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+#lich-su-hinh-thanh,
+.sunstex-history {
+	scroll-margin-top: clamp(80px, 9vw, 120px) !important;
+}
+
 /* --------------------------------------------------------------------------
    1. HISTORY SECTION CONTAINER (.sunstex-history)
    -------------------------------------------------------------------------- */
