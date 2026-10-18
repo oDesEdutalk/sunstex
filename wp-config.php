@@ -26,7 +26,7 @@ define( 'DB_NAME', 'sunstex' );
 define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', '' );
+define( 'DB_PASSWORD', 'Duong@07' );
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
@@ -35,7 +35,7 @@ define( 'DB_HOST', 'localhost' );
 define( 'DB_CHARSET', 'utf8mb4' );
 
 /** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+define( 'DB_COLLATE', 'st_' );
 
 /**#@+
  * Authentication unique keys and salts.
@@ -85,8 +85,11 @@ $table_prefix = 'st_';
  *
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
-define( 'WP_DEBUG', false );
-
+define( 'WP_DEBUG', true );
+// Fix HTTPS detection khi ch?y sau proxy/CDN
+if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https' ) {
+    $_SERVER['HTTPS'] = 'on';
+}
 /* Add any custom values between this line and the "stop editing" line. */
 
 
