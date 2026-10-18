@@ -1,6 +1,6 @@
 /**
  * Sunstex History Timeline - Interactive UI/UX Component
- * Supports 5 Milestones, Smooth Crossfade Imagery, Progress Bar, Autoplay & Touch
+ * Supports dedicated image per year, animated progress bar, autoplay & touch swipe
  */
 document.addEventListener("DOMContentLoaded", function () {
 	const timelineContainers = document.querySelectorAll(".sunstex-history");
@@ -11,71 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		const prevBtn = timeline.querySelector(".sunstex-history-prev");
 		const nextBtn = timeline.querySelector(".sunstex-history-next");
 		const yearsGroup = timeline.querySelector(".sunstex-history-years");
-		const featureContainer = timeline.querySelector(".sunstex-history-feature");
-		const imageWrapper = timeline.querySelector(".sunstex-history-image");
-		const featureImg = imageWrapper ? imageWrapper.querySelector("img") : null;
 
 		if (!events.length || !yearButtons.length) {
 			return;
 		}
 
-		// Milestone configuration with real high-resolution Sunstex assets
-		const milestoneData = [
-			{
-				year: "2008",
-				tag: "Khởi Nguyên Đặt Nền Móng",
-				badge: "Xưởng May Đạt Chuẩn",
-				img: "https://sunstex.vn/wp-content/uploads/2026/08/MG_7202-scaled.jpg",
-				alt: "Xưởng may Sunstex thành lập năm 2008"
-			},
-			{
-				year: "2014",
-				tag: "Mở Rộng Quy Mô",
-				badge: "Dây Chuyền May Hiện Đại",
-				img: "https://sunstex.vn/wp-content/uploads/2026/08/Cover-2021-12.jpg",
-				alt: "Dây chuyền máy may công nghiệp Sunstex 2014"
-			},
-			{
-				year: "2018",
-				tag: "Bước Ngoặt Bứt Phá",
-				badge: "Hợp Tác Đối Tác Lớn",
-				img: "https://sunstex.vn/wp-content/uploads/2026/08/Cover-2021-09.jpg",
-				alt: "Đội ngũ nhân sự và chuỗi cung ứng Sunstex 2018"
-			},
-			{
-				year: "2021",
-				tag: "Tiên Phong Công Nghệ",
-				badge: "In Lụa & Kỹ Thuật Số Tự Động",
-				img: "https://sunstex.vn/wp-content/uploads/2026/08/Cover-2021-08.jpg",
-				alt: "Phân xưởng in tự động hóa Sunstex 2021"
-			},
-			{
-				year: "2024 - Nay",
-				tag: "Vươn Tầm Quốc Tế",
-				badge: "Dệt May Bền Vững & ODM/OEM",
-				img: "https://sunstex.vn/wp-content/uploads/2026/08/MG_7347-scaled.jpg",
-				alt: "Quy trình dệt may xanh và xuất khẩu Sunstex"
-			}
-		];
-
-		// Preload images for silky-smooth instant switching
-		milestoneData.forEach((m) => {
-			const preloadImg = new Image();
-			preloadImg.src = m.img;
-		});
-
-		// Create dynamic visual badge overlay on image wrapper
-		if (imageWrapper && !imageWrapper.querySelector(".sunstex-img-overlay-badges")) {
-			const overlayBadges = document.createElement("div");
-			overlayBadges.className = "sunstex-img-overlay-badges";
-			overlayBadges.innerHTML = `
-				<div class="sunstex-badge-chip year-chip">2008</div>
-				<div class="sunstex-badge-chip tag-chip">Khởi Nguyên Đặt Nền Móng</div>
-			`;
-			imageWrapper.appendChild(overlayBadges);
-		}
-
-		// Inject glowing progress line track into years group
+		// Inject dynamic glowing progress bar into years group
 		let progressTrack = yearsGroup ? yearsGroup.querySelector(".sunstex-timeline-progress") : null;
 		let progressFill = null;
 		if (yearsGroup && !progressTrack) {
@@ -95,67 +36,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		const updateActiveState = (index, userInitiated = false) => {
 			activeIndex = (index + events.length) % events.length;
-			const current = milestoneData[activeIndex] || milestoneData[0];
 
-			// 1. Update text events
+			// 1. Toggle active event (shows corresponding image & text together)
 			events.forEach((ev, i) => {
 				const isActive = i === activeIndex;
 				ev.classList.toggle("is-active", isActive);
 				ev.setAttribute("aria-hidden", String(!isActive));
 			});
 
-			// 2. Update year buttons
+			// 2. Update year button states
 			yearButtons.forEach((btn, i) => {
 				const link = btn.querySelector(".elementor-button");
-				const label = btn.querySelector(".elementor-button-text");
-				const mData = milestoneData[i];
 				const isActive = i === activeIndex;
 
-				if (label && mData) {
-					label.textContent = mData.year;
-				}
 				btn.classList.toggle("is-active", isActive);
 				btn.classList.toggle("is-passed", i < activeIndex);
 				if (link) {
 					link.setAttribute("role", "button");
 					link.setAttribute("aria-pressed", String(isActive));
-					link.setAttribute("aria-label", `Xem mốc năm ${mData ? mData.year : ""}`);
 				}
 			});
 
-			// 3. Update Progress Bar Fill
+			// 3. Update Progress Track Fill
 			if (progressFill && yearButtons.length > 1) {
 				const percent = (activeIndex / (yearButtons.length - 1)) * 100;
 				progressFill.style.width = `${percent}%`;
 			}
 
-			// 4. Update image with smooth crossfade
-			if (featureImg && current) {
-				featureImg.style.opacity = "0.2";
-				featureImg.style.transform = "scale(0.97)";
-				setTimeout(() => {
-					featureImg.src = current.img;
-					featureImg.alt = current.alt;
-					featureImg.style.opacity = "1";
-					featureImg.style.transform = "scale(1)";
-				}, 160);
-			}
-
-			// 5. Update floating image badges
-			if (imageWrapper) {
-				const yearChip = imageWrapper.querySelector(".sunstex-badge-chip.year-chip");
-				const tagChip = imageWrapper.querySelector(".sunstex-badge-chip.tag-chip");
-				if (yearChip && current) yearChip.textContent = current.year;
-				if (tagChip && current) tagChip.textContent = current.badge;
-			}
-
-			// If clicked directly, reset autoplay timer so user has time to read
+			// If clicked directly by user, reset autoplay timer so they have time to view
 			if (userInitiated) {
 				resetAutoplay();
 			}
 		};
 
-		// Year button click handlers (direct index click)
+		// Year button direct click
 		yearButtons.forEach((btn, index) => {
 			btn.addEventListener("click", (e) => {
 				e.preventDefault();
@@ -173,13 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 
-		// Arrow navigation
+		// Prev / Next button navigation
 		if (prevBtn) {
-			const link = prevBtn.querySelector(".elementor-button");
-			if (link) {
-				link.setAttribute("role", "button");
-				link.setAttribute("aria-label", "Mốc thời gian trước đó");
-			}
 			prevBtn.addEventListener("click", (e) => {
 				e.preventDefault();
 				updateActiveState(activeIndex - 1, true);
@@ -187,18 +96,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 
 		if (nextBtn) {
-			const link = nextBtn.querySelector(".elementor-button");
-			if (link) {
-				link.setAttribute("role", "button");
-				link.setAttribute("aria-label", "Mốc thời gian kế tiếp");
-			}
 			nextBtn.addEventListener("click", (e) => {
 				e.preventDefault();
 				updateActiveState(activeIndex + 1, true);
 			});
 		}
 
-		// Keyboard left/right arrows
+		// Keyboard Left / Right navigation
 		timeline.addEventListener("keydown", (e) => {
 			if (e.key === "ArrowLeft") {
 				e.preventDefault();
@@ -209,10 +113,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		});
 
-		// Touch swipe gestures for mobile
+		// Mobile Touch Swipe support
 		let touchStartX = 0;
-		let touchEndX = 0;
-
 		timeline.addEventListener(
 			"touchstart",
 			(e) => {
@@ -224,14 +126,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		timeline.addEventListener(
 			"touchend",
 			(e) => {
-				touchEndX = e.changedTouches[0].screenX;
+				const touchEndX = e.changedTouches[0].screenX;
 				const diff = touchStartX - touchEndX;
 				if (Math.abs(diff) > 45) {
 					if (diff > 0) {
-						// Swiped left -> next
 						updateActiveState(activeIndex + 1, true);
 					} else {
-						// Swiped right -> prev
 						updateActiveState(activeIndex - 1, true);
 					}
 				}
@@ -239,11 +139,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			{ passive: true }
 		);
 
-		// Autoplay management
+		// Autoplay every 6 seconds (pauses on hover)
 		function startAutoplay() {
 			stopAutoplay();
 			autoplayTimer = setInterval(() => {
-				if (!isHovered) {
+				if (!isHovered && !document.body.classList.contains("elementor-editor-active")) {
 					updateActiveState(activeIndex + 1, false);
 				}
 			}, 6000);
