@@ -9,7 +9,7 @@
     <div class="description"><?php the_excerpt(); ?></div>
     <div class="service-button-wrap">
         <a class="service-button" href="<?php the_permalink() ?>">
-            <span><?php echo esc_html__('Read More', 'extice'); ?></span>
+            <span><?php echo esc_html__('Đọc thêm', 'extice'); ?></span>
             <i class="extice-icon-arrow-right"></i>
         </a>
     </div>

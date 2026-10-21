@@ -91,6 +91,8 @@ if ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && $_SERVER['HTTP_X_FORWARDED_P
     $_SERVER['HTTPS'] = 'on';
 }
 /* Add any custom values between this line and the "stop editing" line. */
+define( 'FS_METHOD', 'direct' );
+
 
 
 
