@@ -484,6 +484,13 @@ body .comment-body {
   padding: 0 !important;
   width: 100% !important;
 }
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery::before,
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery::after,
+.single-extice_project .gallery::before,
+.single-extice_project .gallery::after {
+  display: none !important;
+  content: none !important;
+}
 .single-extice_project .elementor-element.elementor-element-dde609b .gallery-item {
   margin: 0 !important;
   padding: 0 !important;
