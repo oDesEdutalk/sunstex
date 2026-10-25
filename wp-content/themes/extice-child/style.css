@@ -181,22 +181,6 @@ body .comment-body {
   opacity: 0.5 !important;
 }
 
-/* Base Container & Grid */
-.single-extice_project #content {
-  padding: 0;
-}
-.single-extice_project #content .col-full {
-  max-width: 1290px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-.single-extice_project .site-main {
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
 
 /* ==========================================================================
    SINGLE PROJECT LAYOUT (Matching services/qua-tang-may-mac/ exactly)
