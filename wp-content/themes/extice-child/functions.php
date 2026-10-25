@@ -87,3 +87,128 @@ function extice_child_enqueue_history_timeline_assets() {
 	);
 }
 add_action( 'wp_enqueue_scripts', 'extice_child_enqueue_history_timeline_assets', 1000 );
+
+/**
+ * Shortcode [sunstex_project_nav]
+ * Displays the published projects in the sidebar navigation matching service-style-5.
+ */
+function sunstex_project_nav_shortcode() {
+	$current_id = get_the_ID();
+	$projects = get_posts( array(
+		'post_type'      => 'extice_project',
+		'post_status'    => 'publish',
+		'numberposts'    => -1,
+		'orderby'        => 'menu_order date',
+		'order'          => 'ASC',
+	) );
+
+	if ( empty( $projects ) ) {
+		return '';
+	}
+
+	ob_start();
+	?>
+	<div class="elementor-service-style-5 elementor-widget elementor-widget-extice-services">
+		<div class="elementor-widget-container">
+			<div class="elementor-service-wrapper">
+				<div class="d-grid">
+					<?php foreach ( $projects as $proj ) :
+						$is_current = ( $proj->ID === $current_id );
+						$item_class = $is_current ? 'current_post service-content post-' . $proj->ID : 'service-content post-' . $proj->ID;
+					?>
+						<div class="grid-item service-item service-style-5">
+							<div class="<?php echo esc_attr( $item_class ); ?>">
+								<h6 class="service-title">
+									<a href="<?php echo esc_url( get_permalink( $proj->ID ) ); ?>">
+										<span><?php echo esc_html( $proj->post_title ); ?></span>
+										<i class="extice-icon-angle-right"></i>
+									</a>
+								</h6>
+							</div>
+						</div>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+	<?php
+	return ob_get_clean();
+}
+add_shortcode( 'sunstex_project_nav', 'sunstex_project_nav_shortcode' );
+
+/**
+ * Add Elementor classes to single project posts
+ */
+add_filter( 'body_class', function( $classes ) {
+	if ( is_singular( 'extice_project' ) ) {
+		$classes[] = 'elementor-page';
+	}
+	return $classes;
+} );
+
+/**
+ * Enqueue widget CSS for single projects
+ */
+function extice_child_enqueue_project_assets() {
+	if ( is_singular( 'extice_project' ) ) {
+		$theme_dir   = get_stylesheet_directory();
+		$theme_uri   = get_stylesheet_directory_uri();
+		$style_css   = $theme_dir . '/style.css';
+		$upload_dir  = wp_upload_dir();
+
+		// Cache bust child theme style.css
+		wp_dequeue_style( 'extice-child-style' );
+		wp_deregister_style( 'extice-child-style' );
+		wp_enqueue_style(
+			'extice-child-style',
+			$theme_uri . '/style.css',
+			array( 'extice-style' ),
+			file_exists( $style_css ) ? filemtime( $style_css ) : time()
+		);
+
+		// 1. Heading Widget CSS
+		$heading_css_path = WP_PLUGIN_DIR . '/elementor/assets/css/widget-heading.min.css';
+		if ( file_exists( $heading_css_path ) ) {
+			wp_enqueue_style(
+				'elementor-widget-heading',
+				plugins_url( 'elementor/assets/css/widget-heading.min.css' ),
+				array( 'elementor-frontend' ),
+				'4.2.1'
+			);
+		}
+
+		// 2. Icon Box Widget CSS
+		$icon_box_path = $upload_dir['basedir'] . '/elementor/css/custom-widget-icon-box.min.css';
+		if ( file_exists( $icon_box_path ) ) {
+			wp_enqueue_style(
+				'elementor-custom-widget-icon-box',
+				$upload_dir['baseurl'] . '/elementor/css/custom-widget-icon-box.min.css',
+				array( 'elementor-frontend' ),
+				filemtime( $icon_box_path )
+			);
+		}
+
+		// 3. Image Gallery Widget CSS
+		$gallery_path = $upload_dir['basedir'] . '/elementor/css/custom-widget-image-gallery.min.css';
+		if ( file_exists( $gallery_path ) ) {
+			wp_enqueue_style(
+				'elementor-custom-widget-image-gallery',
+				$upload_dir['baseurl'] . '/elementor/css/custom-widget-image-gallery.min.css',
+				array( 'elementor-frontend' ),
+				filemtime( $gallery_path )
+			);
+		}
+
+		// 4. Nested Accordion CSS
+		$nested_acc_path = WP_PLUGIN_DIR . '/elementor/assets/css/widget-nested-accordion.min.css';
+		if ( file_exists( $nested_acc_path ) ) {
+			wp_enqueue_style(
+				'widget-nested-accordion',
+				plugins_url( 'elementor/assets/css/widget-nested-accordion.min.css' ),
+				array( 'elementor-frontend' ),
+				'4.2.1'
+			);
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'extice_child_enqueue_project_assets', 1001 );

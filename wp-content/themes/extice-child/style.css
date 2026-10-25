@@ -73,3 +73,633 @@ body .comment-body {
 .dashicons {
   font-family: "dashicons" !important;
 }
+
+/* ==========================================================
+   Project Style 1 Matching Service Style 1 Layout
+   ========================================================== */
+.project-item.project-style-1 {
+  border-radius: 24px;
+  background: #fff;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.project-item.project-style-1:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+.project-item.project-style-1 .service-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.project-item.project-style-1 .icon-wrap {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f6f6f6;
+  padding: 12px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.project-item.project-style-1:hover .icon-wrap {
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+.project-item.project-style-1 .icon-wrap .project-logo {
+  max-width: 56px;
+  max-height: 56px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.project-item.project-style-1 .project-title {
+  margin-bottom: 16px;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 700;
+}
+.project-item.project-style-1 .project-title a {
+  color: #1a1a1a;
+  transition: color 0.3s ease;
+}
+.project-item.project-style-1 .project-title a:hover {
+  color: #f26522;
+}
+.project-item.project-style-1 .project-excerpt,
+.project-item.project-style-1 .description {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+.project-item.project-style-1 .project-button-wrap {
+  margin-top: auto;
+}
+.project-item.project-style-1 .project-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.project-item.project-style-1 .project-button:hover {
+  color: #f26522;
+}
+.project-item.project-style-1 .project-button i {
+  transition: transform 0.3s ease;
+}
+.project-item.project-style-1 .project-button:hover i {
+  transform: translateX(4px);
+}
+
+/* ==========================================================
+   Project Detail Page (Perfect Match for Services Detail Pages)
+   Reference: https://sunstex.vn/services/in-ky-thuat-so-tren-vai
+   ========================================================== */
+
+/* Top Breadcrumb Header Banner */
+.single-extice_project .breadcrumb-wrap {
+  background-image: url("https://sunstex.vn/wp-content/uploads/2025/08/services-details-bc-1.jpg") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+.single-extice_project .breadcrumb-wrap .breadcrumb-overlay {
+  opacity: 0.5 !important;
+}
+
+/* Base Container & Grid */
+.single-extice_project #content {
+  padding: 0;
+}
+.single-extice_project #content .col-full {
+  max-width: 1290px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.single-extice_project .site-main {
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ==========================================================================
+   SINGLE PROJECT LAYOUT (Matching services/qua-tang-may-mac/ exactly)
+   ========================================================================== */
+
+/* Sidebar Navigation Box (.elementor-element-52d2865) */
+.single-extice_project .elementor-element.elementor-element-52d2865 {
+  background-color: #F5F5F5 !important;
+  border-radius: 24px !important;
+  padding: 30px !important;
+  margin-bottom: 30px !important;
+  box-sizing: border-box !important;
+}
+.single-extice_project .elementor-element.elementor-element-52d2865 .d-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+.single-extice_project .elementor-service-style-5 .service-title {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.single-extice_project .elementor-service-style-5 .service-title a {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 16px 20px !important;
+  border-radius: 12px !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: #282725 !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+.single-extice_project .elementor-service-style-5 .service-title a i {
+  font-size: 14px !important;
+  color: #282725 !important;
+  transition: transform 0.3s ease, color 0.3s ease !important;
+}
+.single-extice_project .elementor-service-style-5 .current_post .service-title a,
+.single-extice_project .elementor-service-style-5 .service-item:hover .service-title a,
+.single-extice_project .elementor-service-style-5 .service-title a:hover {
+  background-color: #FEAF06 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 15px rgba(254, 175, 6, 0.25) !important;
+}
+.single-extice_project .elementor-service-style-5 .current_post .service-title a i,
+.single-extice_project .elementor-service-style-5 .service-item:hover .service-title a i,
+.single-extice_project .elementor-service-style-5 .service-title a:hover i {
+  color: #FFFFFF !important;
+  transform: translateX(4px) !important;
+}
+
+/* Sidebar Help Box (.elementor-element-d10dccb) */
+.single-extice_project .elementor-element.elementor-element-d10dccb {
+  min-height: 520px !important;
+  border-radius: 24px !important;
+  padding: 30px 30px 50px 30px !important;
+  background-image: url("https://sunstex.vn/wp-content/uploads/2025/08/service-detail-banner.jpg") !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+.single-extice_project .elementor-element.elementor-element-d10dccb::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: #000000 !important;
+  opacity: 0.46 !important;
+  z-index: 1 !important;
+}
+.single-extice_project .elementor-element.elementor-element-d10dccb > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+.single-extice_project .elementor-element.elementor-element-6dafcb4 {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+}
+.single-extice_project .elementor-element.elementor-element-6dafcb4 .elementor-heading-title {
+  color: #FFFFFF !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}
+.single-extice_project .elementor-element.elementor-element-928a378 {
+  text-align: center !important;
+  margin-bottom: 15px !important;
+}
+.single-extice_project .elementor-element.elementor-element-928a378 > .elementor-widget-container {
+  display: inline-block !important;
+  border-style: solid !important;
+  border-width: 0px 0px 2px 0px !important;
+  border-color: #FEAF06 !important;
+  padding-bottom: 4px !important;
+  margin: 0 auto !important;
+}
+.single-extice_project .elementor-element.elementor-element-928a378 .elementor-heading-title {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  line-height: 1.1em !important;
+  margin: 0 !important;
+}
+.single-extice_project .elementor-element.elementor-element-928a378 .elementor-heading-title a {
+  color: #FEAF06 !important;
+  text-decoration: none !important;
+}
+.single-extice_project .elementor-element.elementor-element-e06d652 {
+  text-align: center !important;
+  margin-bottom: 35px !important;
+}
+.single-extice_project .elementor-element.elementor-element-e06d652 .elementor-heading-title,
+.single-extice_project .elementor-element.elementor-element-e06d652 .elementor-heading-title a {
+  color: #FFFFFF !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  text-decoration: none !important;
+  transition: color 0.3s ease !important;
+}
+.single-extice_project .elementor-element.elementor-element-e06d652 .elementor-heading-title a:hover {
+  color: #FEAF06 !important;
+}
+.single-extice_project .elementor-element.elementor-element-33bb2fc {
+  text-align: center !important;
+}
+.single-extice_project .elementor-element.elementor-element-33bb2fc .elementor-button-wrapper {
+  display: flex !important;
+  justify-content: center !important;
+}
+.single-extice_project .elementor-element.elementor-element-33bb2fc .elementor-button {
+  background-color: #FEAF06 !important;
+  color: #FFFFFF !important;
+  border-radius: 30px !important;
+  padding: 14px 34px !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  transition: all 0.3s ease !important;
+}
+.single-extice_project .elementor-element.elementor-element-33bb2fc .elementor-button:hover {
+  background-color: #E49D05 !important;
+  transform: translateY(-2px) !important;
+}
+.single-extice_project .elementor-element.elementor-element-33bb2fc .elementor-button-content-wrapper {
+  display: inline-flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+
+/* 1. Featured image (fe386fc) */
+.single-extice_project .elementor-element.elementor-element-fe386fc {
+  margin-bottom: 30px !important;
+  width: 100% !important;
+}
+.single-extice_project .elementor-element.elementor-element-fe386fc .elementor-post-thumbnail img {
+  border-radius: 24px !important;
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+/* 2. Page Title (1f98f7c) */
+.single-extice_project .elementor-element.elementor-element-1f98f7c {
+  margin-bottom: 25px !important;
+}
+.single-extice_project .elementor-element.elementor-element-1f98f7c .elementor-heading-title,
+.single-extice_project .elementor-element.elementor-element-1f98f7c .hfe-page-title a {
+  color: #282725 !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  line-height: 1.3em !important;
+  margin: 0 !important;
+}
+
+/* 3. Text Editor Lead (0c7d2fb) */
+.single-extice_project .elementor-element.elementor-element-0c7d2fb {
+  margin-bottom: 40px !important;
+}
+.single-extice_project .elementor-element.elementor-element-0c7d2fb p {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+  color: #5C5D5E !important;
+  margin: 0 0 16px 0 !important;
+}
+
+/* 4. 2-Column Checkmarks Grid (a50d3b7, f07f72b, 832546b) */
+.single-extice_project .elementor-element.elementor-element-a50d3b7 {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 30px !important;
+  margin-bottom: 45px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+.single-extice_project .elementor-element.elementor-element-f07f72b,
+.single-extice_project .elementor-element.elementor-element-832546b {
+  flex: 1 1 50% !important;
+  width: 50% !important;
+  max-width: 50% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  box-sizing: border-box !important;
+}
+.single-extice_project .elementor-widget-icon-box {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.single-extice_project .elementor-widget-icon-box .elementor-icon-box-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  gap: 12px !important;
+}
+.single-extice_project .elementor-widget-icon-box .elementor-icon-box-icon {
+  display: inline-flex !important;
+  flex-shrink: 0 !important;
+  margin-top: 2px !important;
+}
+.single-extice_project .elementor-widget-icon-box .elementor-icon {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  min-height: 22px !important;
+  border-radius: 50% !important;
+  background-color: #FEAF06 !important;
+  color: #FFFFFF !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 8px !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+}
+.single-extice_project .elementor-widget-icon-box .elementor-icon i {
+  color: #FFFFFF !important;
+  font-size: 8px !important;
+  line-height: 1 !important;
+}
+.single-extice_project .elementor-widget-icon-box .elementor-icon-box-content {
+  flex: 1 1 auto !important;
+}
+.single-extice_project .elementor-widget-icon-box .elementor-icon-box-title {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.4em !important;
+  color: #282725 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* 5. Section Heading 1 (7c2eb09) */
+.single-extice_project .elementor-element.elementor-element-7c2eb09 {
+  margin-top: 45px !important;
+  margin-bottom: 25px !important;
+}
+.single-extice_project .elementor-element.elementor-element-7c2eb09 .elementor-heading-title {
+  color: #282725 !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.3em !important;
+  margin: 0 !important;
+}
+
+/* 6. Image Gallery (dde609b) */
+.single-extice_project .elementor-element.elementor-element-dde609b {
+  margin-bottom: 35px !important;
+  width: 100% !important;
+}
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 30px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery-item {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+  float: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery-icon {
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery-item a {
+  display: block !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  width: 100% !important;
+  height: 280px !important;
+}
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery-item img {
+  border-radius: 18px !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+  transition: transform 0.4s ease !important;
+}
+.single-extice_project .elementor-element.elementor-element-dde609b .gallery-item:hover img {
+  transform: scale(1.04) !important;
+}
+
+/* 7. Description Text 1 (2f260cd) */
+.single-extice_project .elementor-element.elementor-element-2f260cd {
+  margin-bottom: 45px !important;
+}
+.single-extice_project .elementor-element.elementor-element-2f260cd p {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+  color: #5C5D5E !important;
+  margin: 0 0 16px 0 !important;
+}
+
+/* 8. Section Heading 2 (5549f06) */
+.single-extice_project .elementor-element.elementor-element-5549f06 {
+  margin-top: 45px !important;
+  margin-bottom: 25px !important;
+}
+.single-extice_project .elementor-element.elementor-element-5549f06 .elementor-heading-title {
+  color: #282725 !important;
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  line-height: 1.3em !important;
+  margin: 0 !important;
+}
+
+/* 9. Description Text 2 (e95c64b) */
+.single-extice_project .elementor-element.elementor-element-e95c64b {
+  margin-bottom: 45px !important;
+}
+.single-extice_project .elementor-element.elementor-element-e95c64b p {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 16px !important;
+  line-height: 1.75 !important;
+  color: #5C5D5E !important;
+  margin: 0 0 16px 0 !important;
+}
+
+/* 10. Nested Accordion FAQ (fb99d0a) */
+.single-extice_project .elementor-element.elementor-element-fb99d0a {
+  margin-top: 30px !important;
+  margin-bottom: 40px !important;
+  width: 100% !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 15px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  background-color: #F9F9F9 !important;
+  border: 1px solid #ECECEC !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item[open] {
+  border-color: #FEAF06 !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item-title {
+  background-color: #F9F9F9 !important;
+  border-style: none !important;
+  padding: 20px 25px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  list-style: none !important;
+  user-select: none !important;
+  outline: none !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item-title::-webkit-details-marker {
+  display: none !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item-title-text {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.4em !important;
+  color: #282725 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transition: color 0.3s ease !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item[open] .e-n-accordion-item-title-text {
+  color: #FEAF06 !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item[open] .e-n-accordion-item-title {
+  border-bottom: 1px solid #ECECEC !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item-title-icon {
+  font-size: 14px !important;
+  color: #282725 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  margin-left: 15px !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item .e-opened {
+  display: none !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item .e-closed {
+  display: inline-block !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item[open] .e-opened {
+  display: inline-block !important;
+  color: #FEAF06 !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item[open] .e-closed {
+  display: none !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item > .e-con {
+  background-color: #FFFFFF !important;
+  padding: 22px 25px 25px !important;
+  border-radius: 0 0 12px 12px !important;
+}
+.single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item > .e-con p {
+  font-family: "SVN-Gotham", Sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.75 !important;
+  color: #5C5D5E !important;
+  margin: 0 !important;
+}
+
+/* Responsive Adaptations */
+@media (max-width: 1200px) {
+  .single-extice_project .elementor-element.elementor-element-fb99d0a .e-n-accordion-item-title-text {
+    font-size: 17px !important;
+  }
+}
+@media (max-width: 1024px) {
+  .single-extice_project .elementor-element.elementor-element-d10dccb {
+    min-height: 440px !important;
+    padding: 30px 20px 40px !important;
+  }
+  .single-extice_project .elementor-element.elementor-element-928a378 .elementor-heading-title {
+    font-size: 28px !important;
+  }
+}
+@media (max-width: 880px) {
+  .single-extice_project .elementor-element.elementor-element-a50d3b7 {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .single-extice_project .elementor-element.elementor-element-f07f72b,
+  .single-extice_project .elementor-element.elementor-element-832546b {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+  .single-extice_project .elementor-element.elementor-element-dde609b .gallery {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .single-extice_project .elementor-element.elementor-element-dde609b .gallery-item a {
+    height: 220px !important;
+  }
+}
+@media (max-width: 575px) {
+  .single-extice_project .elementor-element.elementor-element-1f98f7c .elementor-heading-title {
+    font-size: 26px !important;
+  }
+}
