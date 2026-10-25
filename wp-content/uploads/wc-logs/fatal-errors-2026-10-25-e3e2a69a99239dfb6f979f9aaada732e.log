@@ -1,0 +1,1 @@
+2026-10-25T03:15:39+00:00 CRITICAL Uncaught Error: Call to undefined method Elementor\Preview::get_preview_url() in Command line code:4 CONTEXT: {"error":{"type":1,"file":"Command line code","line":4},"remote-logging":true,"backtrace":["","#0 {main}","thrown"]}

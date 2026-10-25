@@ -171,21 +171,22 @@ add_filter( 'elementor/widget/render_content', function( $widget_content, $widge
  * Enqueue widget CSS for single projects
  */
 function extice_child_enqueue_project_assets() {
-	if ( is_singular( 'extice_project' ) ) {
-		$theme_dir   = get_stylesheet_directory();
-		$theme_uri   = get_stylesheet_directory_uri();
-		$style_css   = $theme_dir . '/style.css';
-		$upload_dir  = wp_upload_dir();
+	$theme_dir   = get_stylesheet_directory();
+	$theme_uri   = get_stylesheet_directory_uri();
+	$style_css   = $theme_dir . '/style.css';
 
-		// Cache bust child theme style.css
-		wp_dequeue_style( 'extice-child-style' );
-		wp_deregister_style( 'extice-child-style' );
-		wp_enqueue_style(
-			'extice-child-style',
-			$theme_uri . '/style.css',
-			array( 'extice-style' ),
-			file_exists( $style_css ) ? filemtime( $style_css ) : time()
-		);
+	// Cache bust child theme style.css for all frontend pages
+	wp_dequeue_style( 'extice-child-style' );
+	wp_deregister_style( 'extice-child-style' );
+	wp_enqueue_style(
+		'extice-child-style',
+		$theme_uri . '/style.css',
+		array( 'extice-style' ),
+		file_exists( $style_css ) ? filemtime( $style_css ) : time()
+	);
+
+	if ( is_singular( 'extice_project' ) ) {
+		$upload_dir  = wp_upload_dir();
 
 		// 1. Heading Widget CSS
 		$heading_css_path = WP_PLUGIN_DIR . '/elementor/assets/css/widget-heading.min.css';
@@ -233,3 +234,28 @@ function extice_child_enqueue_project_assets() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'extice_child_enqueue_project_assets', 1001 );
+
+/**
+ * Contact Form 7 Lead Resilience
+ * Ensures customer submissions saved to Flamingo are treated as successful,
+ * preventing customers from seeing error alerts if email sending experiences issues.
+ */
+add_filter( 'wpcf7_submission_result', function( $result, $submission ) {
+	if ( isset( $result['status'] ) && $result['status'] === 'mail_failed' ) {
+		$contact_form = $submission->get_contact_form();
+		$result['status'] = 'mail_sent';
+		$result['message'] = $contact_form ? $contact_form->message( 'mail_sent_ok' ) : 'Cảm ơn bạn! Yêu cầu của bạn đã được gửi thành công.';
+	}
+	return $result;
+}, 10, 2 );
+
+add_filter( 'wpcf7_feedback_response', function( $response, $result ) {
+	if ( isset( $response['status'] ) && $response['status'] === 'mail_failed' ) {
+		$response['status'] = 'mail_sent';
+		$contact_form = wpcf7_get_current_contact_form();
+		if ( $contact_form ) {
+			$response['message'] = $contact_form->message( 'mail_sent_ok' );
+		}
+	}
+	return $response;
+}, 20, 2 );

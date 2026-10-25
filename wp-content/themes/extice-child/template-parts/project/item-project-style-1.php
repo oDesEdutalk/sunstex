@@ -13,7 +13,7 @@
         <h4 class="service-title project-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
         <div class="description project-excerpt"><?php the_excerpt(); ?></div>
         <div class="service-button-wrap project-button-wrap">
-            <a class="service-button project-button" href="<?php the_permalink(); ?>">
+            <a class="service-button" href="<?php the_permalink(); ?>">
                 <span><?php echo esc_html__('Đọc thêm', 'extice'); ?></span>
                 <i class="extice-icon-arrow-right"></i>
             </a>
