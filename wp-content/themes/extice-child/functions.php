@@ -147,6 +147,27 @@ add_filter( 'body_class', function( $classes ) {
 } );
 
 /**
+ * Ensure the breadcrumb banner heading title always displays "Dự Án/ Khách Hàng Tiêu Biểu" on project pages
+ */
+add_filter( 'elementor/widget/render_content', function( $widget_content, $widget ) {
+	if ( 'extice-woocommerce-breadcrumb' === $widget->get_name() ) {
+		$is_project = is_singular( 'extice_project' )
+			|| is_post_type_archive( 'extice_project' )
+			|| is_tax( 'project_cat' )
+			|| ( isset( $_GET['elementor-preview'] ) && get_post_type( (int) $_GET['elementor-preview'] ) === 'extice_project' );
+
+		if ( $is_project ) {
+			$widget_content = preg_replace(
+				'/<h1 class="extice-woocommerce-title"[^>]*>.*?<\/h1>/su',
+				'<h1 class="extice-woocommerce-title">Dự Án/ Khách Hàng Tiêu Biểu</h1>',
+				$widget_content
+			);
+		}
+	}
+	return $widget_content;
+}, 20, 2 );
+
+/**
  * Enqueue widget CSS for single projects
  */
 function extice_child_enqueue_project_assets() {
